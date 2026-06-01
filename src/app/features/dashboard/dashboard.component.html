@@ -1,0 +1,100 @@
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+  <!-- Card 1 -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col justify-between hover:shadow-md transition-shadow">
+    <div class="flex justify-between items-start">
+      <div>
+        <p class="text-sm font-medium text-gray-500 mb-1">Doanh thu hôm nay</p>
+        <h3 class="text-3xl font-bold text-gray-800">$5,240</h3>
+      </div>
+      <div class="p-3 bg-green-50 rounded-xl">
+        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      </div>
+    </div>
+    <div class="mt-4 flex items-center text-sm">
+      <span class="text-green-500 font-medium flex items-center">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+        +12.5%
+      </span>
+      <span class="text-gray-400 ml-2">so với hôm qua</span>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col justify-between hover:shadow-md transition-shadow">
+    <div class="flex justify-between items-start">
+      <div>
+        <p class="text-sm font-medium text-gray-500 mb-1">Đơn hàng mới</p>
+        <h3 class="text-3xl font-bold text-gray-800">142</h3>
+      </div>
+      <div class="p-3 bg-blue-50 rounded-xl">
+        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+      </div>
+    </div>
+    <div class="mt-4 flex items-center text-sm">
+      <span class="text-red-500 font-medium flex items-center">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+        -2.4%
+      </span>
+      <span class="text-gray-400 ml-2">so với hôm qua</span>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col justify-between hover:shadow-md transition-shadow bg-gradient-to-br from-indigo-500 to-purple-600 text-white border-transparent">
+    <div class="flex justify-between items-start">
+      <div>
+        <p class="text-sm font-medium text-indigo-100 mb-1">Khách hàng mới</p>
+        <h3 class="text-3xl font-bold text-white">48</h3>
+      </div>
+      <div class="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+      </div>
+    </div>
+    <div class="mt-4 flex items-center text-sm">
+      <span class="text-white font-medium bg-white/20 px-2 py-1 rounded-md text-xs">
+        Mục tiêu: Đạt 85%
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Table Area -->
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+  <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+    <h3 class="text-lg font-bold text-gray-800">Đơn hàng gần đây</h3>
+    <button class="text-sm text-indigo-600 font-medium hover:text-indigo-700">Xem tất cả</button>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-gray-50/50 text-gray-500 text-sm">
+          <th class="py-4 px-6 font-medium">Mã Đơn</th>
+          <th class="py-4 px-6 font-medium">Khách hàng</th>
+          <th class="py-4 px-6 font-medium">Ngày đặt</th>
+          <th class="py-4 px-6 font-medium">Trạng thái</th>
+          <th class="py-4 px-6 font-medium text-right">Tổng tiền</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm divide-y divide-gray-100">
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="py-4 px-6 font-medium text-indigo-600">#ORD-001</td>
+          <td class="py-4 px-6 text-gray-700">Nguyễn Văn A</td>
+          <td class="py-4 px-6 text-gray-500">Hôm nay, 10:24 AM</td>
+          <td class="py-4 px-6">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Đã thanh toán</span>
+          </td>
+          <td class="py-4 px-6 font-medium text-gray-900 text-right">$124.00</td>
+        </tr>
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="py-4 px-6 font-medium text-indigo-600">#ORD-002</td>
+          <td class="py-4 px-6 text-gray-700">Trần Thị B</td>
+          <td class="py-4 px-6 text-gray-500">Hôm nay, 09:12 AM</td>
+          <td class="py-4 px-6">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Chờ xử lý</span>
+          </td>
+          <td class="py-4 px-6 font-medium text-gray-900 text-right">$85.50</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
