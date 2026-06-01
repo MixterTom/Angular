@@ -1,59 +1,69 @@
-# MyAwesomeApp
+# 🚀 My Awesome App - Angular Enterprise Architecture
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Chào mừng bạn đến với **My Awesome App**! Dự án này được thiết lập với bộ khung chuẩn dành cho dự án Angular lớn (Enterprise), sử dụng Angular Standalone Components mới nhất.
 
-## Development server
+## 📁 Cấu Trúc Thư Mục (Domain-Driven Design)
 
-To start a local development server, run:
+Mã nguồn chính nằm trong thư mục `src/app/`. Kiến trúc được chia thành 4 phần lõi như sau:
 
-```bash
-ng serve
+```text
+src/app/
+├── core/               # 🛡️ Cốt lõi của hệ thống (Chỉ khởi tạo 1 lần - Singleton)
+│   ├── guards/         # Bảo vệ Routes (vd: AuthGuard kiểm tra đăng nhập)
+│   ├── interceptors/   # Bắt và xử lý HTTP Request/Response (vd: gắn Token, bắt lỗi chung)
+│   ├── models/         # Định nghĩa các TypeScript Interface dùng chung toàn cục
+│   └── services/       # Nơi gọi API Backend (Http Services) và xử lý logic chung
+│
+├── features/           # 🌟 Chứa các chức năng (Module) chính của dự án
+│   ├── auth/           # Giao diện Đăng nhập / Đăng ký
+│   └── dashboard/      # Giao diện trang chủ nội bộ sau đăng nhập
+│   # Mỗi feature tự chứa components, logic, styles riêng của nó
+│
+├── layouts/            # 🖼️ Các Layout bao ngoài giao diện chính
+│   ├── auth-layout/    # Khung layout trống cho màn hình Đăng nhập
+│   └── main-layout/    # Khung layout có Header, Sidebar, Footer...
+│
+└── shared/             # ♻️ Các thành phần dùng chung ở mọi nơi (Không gọi API trực tiếp)
+    ├── components/     # UI Components (Buttons, Modals, Tables, Forms)
+    ├── directives/     # Custom directives để điều khiển DOM
+    ├── pipes/          # Custom pipes để định dạng dữ liệu (vd: Currency, Date)
+    └── utils/          # Các hàm Helpers / Constants / Regex dùng nhiều nơi
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠️ Hướng Dẫn Cài Đặt & Chạy Dự Án
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### 1. Cài đặt các thư viện (Lần đầu tiên)
+Mở Terminal, đi vào thư mục dự án (`my-awesome-app`) và chạy:
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### 2. Khởi chạy Server (Môi trường Development)
+Sử dụng câu lệnh sau để chạy:
 ```bash
-ng generate --help
+npm start
 ```
-
-## Building
-
-To build the project run:
-
+*Hoặc nếu muốn mở trình duyệt ngay khi code xong, chạy lệnh:*
 ```bash
-ng build
+npm start -- -o
 ```
+🌐 **Truy cập dự án tại:** [http://localhost:4200/](http://localhost:4200/)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
+### 3. Build & Đóng gói (Dành cho Production)
+Khi cần triển khai (deploy) dự án lên host:
 ```bash
-ng test
+npm run build
 ```
+Mã nguồn đã được tối ưu hoá sẽ nằm trong thư mục `dist/`.
 
-## Running end-to-end tests
+## ⚙️ Cấu hình chạy nhanh với VS Code (Run Configuration)
+Dự án đã được cấu hình sẵn trong `.vscode`. Bạn có thể chạy nhanh dự án bằng cách:
+1. Mở menu **Run and Debug** của VS Code (Phím tắt `Ctrl + Shift + D`).
+2. Chọn **"Launch Chrome"** hoặc **"Launch Edge"**.
+3. Bấm nút Play 🟢 (hoặc nhấn `F5`) để tự động chạy ứng dụng và bật chế độ Debug của trình duyệt.
 
-For end-to-end (e2e) testing, run:
+## 📦 Quản Lý Phiên Bản Thư Viện (Dependency Management)
+Trong các dự án lớn, việc đồng bộ phiên bản thư viện giữa các thành viên trong team là **cực kỳ quan trọng**. Dự án này đã được áp dụng chiến lược quản lý chặt chẽ:
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **`.npmrc` (save-exact)**: Đã được thêm vào dự án. Mỗi khi bạn chạy `npm install <package>`, NPM sẽ tự động khoá cứng phiên bản lại (VD: `1.2.3` thay vì `^1.2.3`). Điều này tránh được lỗi "chạy được trên máy tôi nhưng lỗi trên máy bạn" khi có bản cập nhật nhỏ của thư viện.
+2. **`package-lock.json`**: Hãy luôn luôn `git commit` file này để toàn bộ team tải xuống đúng một cây thư viện y hệt nhau.
