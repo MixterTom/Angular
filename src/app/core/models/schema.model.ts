@@ -7,7 +7,9 @@ export interface NodeStyles {
 }
 
 export interface NodeEvent {
-  action: string;
+  type: 'EXECUTE_JS' | 'CALL_API' | 'NAVIGATE';
+  code?: string; // Dành riêng cho EXECUTE_JS (chuỗi mã Javascript)
+  url?: string;  // Dành riêng cho API hoặc Navigate
   [key: string]: any;
 }
 
@@ -16,6 +18,6 @@ export interface ComponentNode {
   type: string;
   properties?: NodeProperties;
   styles?: NodeStyles;
-  events?: Record<string, NodeEvent[]>;
+  events?: Record<string, NodeEvent[]>; // Ví dụ: { "onClick": [...] }
   children?: ComponentNode[];
 }

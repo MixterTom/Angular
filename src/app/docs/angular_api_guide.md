@@ -179,3 +179,22 @@ export class DashboardComponent implements OnInit {
 - **Cách Fix:** 
   - Chạy lệnh `npm install -D tailwindcss@^3.4.0 postcss autoprefixer` (Sử dụng bản v3 vì bản v4 mới nhất đã tách thư viện PostCSS ra ngoài gây lỗi tương thích với Angular CLI hiện tại).
   - Sắp xếp lại file `styles.scss` (đẩy `@import` lên đầu) để đúng chuẩn cú pháp.
+
+### 3. Kiến Trúc Low-Code & Lỗi Circular Dependency (Phụ thuộc vòng tròn)
+- **Kiến trúc Engine:** Đã xây dựng thành công bộ máy Low-Code sử dụng `*ngComponentOutlet` (trong `NodeRendererComponent`) để tự động chuyển đổi file JSON thành giao diện UI động (Dynamic Rendering).
+- **Sự cố (Màn hình trắng):** Trong quá trình xây dựng tính năng đệ quy cho `ContainerComponent`, màn hình preview bị trắng hoàn toàn và không có thông báo lỗi trên giao diện.
+- **Nguyên nhân gốc rễ (Circular Dependency):**
+  - `Container` import `NodeRenderer` (để vẽ thẻ con).
+  - `NodeRenderer` import `COMPONENT_REGISTRY` (để lấy class tương ứng).
+  - `COMPONENT_REGISTRY` lại import `Container` (để đăng ký vào từ điển).
+  - **Hậu quả:** TypeScript khởi tạo theo vòng tròn, dẫn đến class `Container` bị mang giá trị `undefined` lúc app mới chạy. Từ đó hàm Outlet bị lỗi và dừng vẽ toàn bộ giao diện.
+- **Cách Fix (Hàm Getter):** Chuyển biến hằng số `const COMPONENT_REGISTRY` thành một hàm `export function getComponentRegistry()`. Điều này khiến "từ điển Component" chỉ được gọi và đánh giá *sau khi* toàn bộ các class đã được Angular nạp xong vào bộ nhớ (ngay tại hàm `ngOnInit()`), phá vỡ thành công nút thắt vòng tròn!
+
+### 4. Động Cơ Thực Thi Javascript Động (Dynamic JS Execution)
+- **Cơ chế hoạt động:** Các Dumb Component (như `UiButtonComponent`) không tự xử lý logic, mà phát ra một hàm callback `onEvent()`.
+- Engine (`NodeRendererComponent`) nhận sự kiện này, đọc JSON Schema (ví dụ: `events: { onClick: [{ type: "EXECUTE_JS", code: "..." }] }`) và sử dụng hàm lõi của ngôn ngữ Javascript là `new Function('node', 'payload', 'state', action.code)` để biên dịch chuỗi Text thành mã máy và thực thi trực tiếp trên trình duyệt.
+
+### 5. Ràng Buộc Dữ Liệu & Nội Suy (Data Binding & Interpolation)
+- **Tạo Global Context (RAM):** `BuilderStateService` được bổ sung một biến State mang tên `globalContext` để lưu trữ dữ liệu từ hệ thống (API, User Session...).
+- **Data Interpolation Engine:** Cập nhật `NodeRendererComponent` để duyệt đệ quy (recursive traversal) toàn bộ `properties` của JSON Schema. Nếu phát hiện chuỗi chứa dấu ngoặc nhọn kép `{{ ... }}`, Engine sử dụng **Regex** để tách lấy biểu thức bên trong và dùng `new Function` để đánh giá biểu thức đó bằng các biến môi trường trong `globalContext`.
+- **Thành quả:** Người dùng có thể viết cấu hình JSON dạng `"label": "Xin chào {{ user.name }}"`, và Engine tự động thay thế bằng `"Xin chào Admin Tối Cao"`. Đây là tính năng lõi (Core Feature) phân định ranh giới giữa một "No-Code Website Builder" và một "Enterprise Low-Code Platform".

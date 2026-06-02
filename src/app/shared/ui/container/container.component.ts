@@ -1,11 +1,11 @@
-import { Component, input } from '@angular/core';
+import { Component, input, forwardRef } from '@angular/core';
 import { ComponentNode } from '../../../core/models/schema.model';
 import { NodeRendererComponent } from '../../../core/renderer/node-renderer.component';
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [NodeRendererComponent],
+  imports: [forwardRef(() => NodeRendererComponent)],
   template: `
     <div [class]="'flex gap-6 p-6 min-h-[150px] w-full rounded-2xl border-2 border-dashed border-gray-300 ' + customClass()"
          [style.flex-direction]="direction()">
