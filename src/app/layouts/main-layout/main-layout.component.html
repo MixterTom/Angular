@@ -1,46 +1,70 @@
-<div class="flex h-screen bg-gray-100 font-sans text-gray-900">
-  <!-- Sidebar -->
-  <aside class="w-64 bg-white shadow-lg flex flex-col transition-all duration-300">
-    <div class="h-16 flex items-center justify-center border-b border-gray-200">
-      <h1 class="text-xl font-bold text-indigo-600 tracking-wider">🚀 MY APP</h1>
+<div class="flex h-screen w-full overflow-hidden bg-[var(--surface)] text-[var(--text)]">
+  
+  <!-- Sidebar (No box-shadow, blends with background) -->
+  <aside class="w-64 flex flex-col z-20 py-8 px-6">
+    <!-- Header/Logo -->
+    <div class="flex items-center mb-12 px-2">
+      <div class="w-10 h-10 neu-flat flex items-center justify-center mr-3 text-primary-color">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+      </div>
+      <h1 class="text-2xl font-bold tracking-tight text-gray-800">NEXUS</h1>
     </div>
-    <nav class="flex-1 p-4 space-y-2">
-      <a href="#" class="flex items-center px-4 py-3 bg-indigo-50 text-indigo-600 rounded-xl font-medium transition-colors">
-        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+
+    <!-- Navigation -->
+    <nav class="flex-1 space-y-3">
+      <!-- Active Item -->
+      <a routerLink="/" routerLinkActive="neu-pressed text-primary-color" [routerLinkActiveOptions]="{exact: true}" class="flex items-center px-4 py-3 font-semibold rounded-xl transition-all hover:text-gray-800 hover:neu-flat text-[var(--text-muted)]">
+        <svg class="w-5 h-5 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
         Dashboard
       </a>
-      <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-indigo-600 rounded-xl font-medium transition-colors">
-        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-        Người dùng
+      
+      <!-- Inactive Item -->
+      <a routerLink="/builder" routerLinkActive="neu-pressed text-primary-color" class="flex items-center px-4 py-3 font-semibold text-[var(--text-muted)] hover:text-gray-800 transition-all rounded-xl hover:neu-flat">
+        <svg class="w-5 h-5 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        Low-Code Editor
       </a>
-      <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-indigo-600 rounded-xl font-medium transition-colors">
-        <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-        Cài đặt
+      
+      <!-- Inactive Item -->
+      <a href="#" class="flex items-center px-4 py-3 font-medium text-[var(--text-muted)] hover:text-gray-800 transition-all rounded-xl hover:neu-flat">
+        <svg class="w-5 h-5 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        Reports
       </a>
     </nav>
+
+    <div class="mt-8">
+      <button class="w-full btn-primary py-3 flex items-center justify-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+        Create Project
+      </button>
+    </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="flex-1 flex flex-col overflow-hidden">
-    <!-- Header -->
-    <header class="h-16 bg-white shadow-sm flex items-center justify-between px-8 z-10">
-      <div class="text-xl font-medium text-gray-800">
-        <!-- Breadcrumb / Title area -->
-        Xin chào, Admin 👋
+  <!-- Main Area -->
+  <main class="flex-1 flex flex-col h-full overflow-hidden p-8 pl-2">
+    
+    <!-- Topbar (Blends with background) -->
+    <header class="h-16 mb-6 flex items-center justify-between px-4">
+      <div class="flex items-center text-sm font-medium text-[var(--text-muted)]">
+        Home <span class="mx-2">></span> <span class="text-gray-800 font-bold">Dashboard</span>
       </div>
-      <div class="flex items-center space-x-4">
-        <button class="p-2 text-gray-400 hover:text-indigo-600 transition-colors">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+      <div class="flex items-center space-x-6">
+        <div class="neu-pressed px-4 py-2 rounded-full flex items-center w-64">
+          <svg class="w-4 h-4 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input type="text" placeholder="Search anything..." class="bg-transparent border-none outline-none w-full text-sm placeholder-gray-400 text-gray-700">
+        </div>
+        <button class="neu-button w-10 h-10 rounded-full flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
         </button>
-        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold border-2 border-white shadow-sm cursor-pointer">
-          AD
+        <div class="neu-flat w-10 h-10 rounded-full flex items-center justify-center font-bold text-primary-color border-2 border-white overflow-hidden">
+          <img src="https://i.pravatar.cc/100?img=3" alt="Profile" class="w-full h-full object-cover">
         </div>
       </div>
     </header>
 
-    <!-- Page Content (Router Outlet) -->
-    <div class="flex-1 overflow-auto p-8 bg-gray-50/50">
+    <!-- Content (Router Outlet) -->
+    <div class="flex-1 overflow-auto px-4 pb-8 custom-scrollbar">
       <router-outlet></router-outlet>
     </div>
+    
   </main>
 </div>
